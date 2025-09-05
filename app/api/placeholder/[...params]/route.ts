@@ -2,9 +2,10 @@ import { NextRequest } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { params: string[] } }
+  context: { params: Promise<{ params: string[] }> }
 ) {
-  const [width, height] = params.params;
+  const resolvedParams = await context.params;
+  const [width, height] = resolvedParams.params;
   
   // Create a simple colored rectangle as placeholder
   const svg = `
