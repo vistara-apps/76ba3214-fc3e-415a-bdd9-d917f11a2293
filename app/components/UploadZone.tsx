@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Upload, Image } from 'lucide-react';
+import { Upload, Image as ImageIcon } from 'lucide-react';
+import Image from 'next/image';
 
 interface UploadZoneProps {
   onImageUpload: (imageUrl: string) => void;
@@ -58,10 +59,11 @@ export function UploadZone({ onImageUpload, uploadedImage }: UploadZoneProps) {
     return (
       <div className="glass-card rounded-lg p-4">
         <div className="relative aspect-square rounded-lg overflow-hidden">
-          <img
+          <Image
             src={uploadedImage}
             alt="Uploaded product"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <button
             onClick={openFileDialog}
@@ -93,7 +95,7 @@ export function UploadZone({ onImageUpload, uploadedImage }: UploadZoneProps) {
     >
       <div className="flex flex-col items-center space-y-4">
         <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
-          <Image className="w-8 h-8 text-white/60" />
+          <ImageIcon className="w-8 h-8 text-white/60" />
         </div>
         
         <div>
